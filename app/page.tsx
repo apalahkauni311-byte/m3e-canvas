@@ -3903,7 +3903,7 @@ export default function Page() {
 
           {isMobile && sheet === null && false && (
             <button
-              onClick={addButton}
+              onClick={() => addButton()}
               title={t("addButton", lang)}
               aria-label={t("addButton", lang)}
               className="m3-press"

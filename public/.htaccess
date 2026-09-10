@@ -1,0 +1,15 @@
+# Namecheap Stellar Plus / Apache static deployment for M3E Canvas
+Options -MultiViews
+RewriteEngine On
+
+# Keep real files and directories untouched.
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+
+# Next.js static export uses trailing-slash directories.
+RewriteCond %{DOCUMENT_ROOT}/$1/index.html -f
+RewriteRule ^(.+?)/?$ $1/index.html [L]
+
+# SPA-style fallback for client-side navigation.
+RewriteRule ^ index.html [L]
